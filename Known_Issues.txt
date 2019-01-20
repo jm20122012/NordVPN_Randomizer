@@ -1,0 +1,2 @@
+Known Issues:
+  - Program errors out if you attempt to run program as a background process (i.e. using "&" after execution call in command line)
