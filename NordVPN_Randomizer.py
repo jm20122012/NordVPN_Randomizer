@@ -57,7 +57,12 @@ def main():
                 randomized_time = datetime.datetime.now() + datetime.timedelta(minutes=random.randrange(1,59))
                 while True:
                     if datetime.datetime.now() >= randomized_time:
-                        subprocess.call(["nordvpn", "disconnect"])
+                        nord_output = subprocess.Popen(["nordvpn", "status"], stdout=subprocess.PIPE)
+                        status = re.split("[\r \n :]", nord_output.communicate()[0].decode("utf-8"))[-2]
+
+                        if status != "Disconnected":
+                            subprocess.call(["nordvpn", "disconnect"])
+
                         logIn(chooseRandom(getCountries()))
                         randomized_time = datetime.datetime.now() + datetime.timedelta(minutes=random.randrange(1,59))
             
