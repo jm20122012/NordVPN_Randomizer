@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import subprocess, re, random, datetime
+import time
 
 def statusCheck():
     """
@@ -55,8 +56,11 @@ def main():
         if continuous_mode == "y":
             try:
                 randomized_time = datetime.datetime.now() + datetime.timedelta(minutes=random.randrange(1,59))
+                print("Scheduled change: {}".format(randomized_time.strftime("%H:%M")))
                 while True:
+                    time.sleep(5)
                     if datetime.datetime.now() >= randomized_time:
+                        subprocess.call(["nordvpn", "disconnect"])
                         logIn(chooseRandom(getCountries()))
                         randomized_time = datetime.datetime.now() + datetime.timedelta(minutes=random.randrange(1,59))
             
