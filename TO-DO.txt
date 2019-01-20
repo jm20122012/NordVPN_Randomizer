@@ -1,0 +1,9 @@
+To-Do List:
+  - Add option to allow users to specify specific server change time intervals versus random time intervals
+  - Add option to allow users to specify if they want to only randomize within a certain country
+  - Add a main menu
+  - Add option for verbose output and logs
+  - Put time into overall code cleanup
+  
+Continuous:
+  - Fix any issues
