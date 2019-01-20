@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-import subprocess
-import re
-import random
+import subprocess, re, random, datetime
 
 def statusCheck():
     """
@@ -53,8 +51,23 @@ def logIn(random_country):
 
 def main():
     try:
-        if statusCheck():
-            logIn(chooseRandom(getCountries()))
+        continuous_mode = input("Would you like to have this script continuously run and log in to random servers at random time intervales? [y/n]: ").lower()
+        if continuous_mode == "y":
+            try:
+                randomized_time = datetime.datetime.now() + datetime.timedelta(minutes=random.randrange(1,59))
+                while True:
+                    if datetime.datetime.now() >= randomized_time:
+                        logIn(chooseRandom(getCountries()))
+                        randomized_time = datetime.datetime.now() + datetime.timedelta(minutes=random.randrange(1,59))
+            
+            except Exception as error:
+                print("Error: {}".format(str(error)))
+
+        elif continuous_mode == "n":
+            print("This script will only run this one time.  If you want to choose another server at random then you will need to run the script again.")        
+            
+            if statusCheck():
+                logIn(chooseRandom(getCountries()))
 
     except Exception as error:
         print("Error: {}".format(str(error)))
