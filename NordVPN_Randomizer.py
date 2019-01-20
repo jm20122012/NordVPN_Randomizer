@@ -51,7 +51,7 @@ def logIn(random_country):
 
 def main():
     try:
-        continuous_mode = input("Would you like to have this script continuously run and log in to random servers at random time intervales? [y/n]: ").lower()
+        continuous_mode = input("Would you like to have this script continuously run and log in to random servers at random time intervals? [y/n]: ").lower()
         if continuous_mode == "y":
             try:
                 randomized_time = datetime.datetime.now() + datetime.timedelta(minutes=random.randrange(1,59))
