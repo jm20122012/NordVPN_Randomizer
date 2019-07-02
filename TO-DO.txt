@@ -3,6 +3,8 @@ To-Do List:
   - Add option to allow users to specify if they want to only randomize within a certain country
   - Add a main menu
   - Add option for verbose output and logs
+  - Change main function while loop to only check time at either 15 or 30 second time interval.  
+        --> (Using continuous checks tends to put unnecessary strain on the CPU.)  
   - Put time into overall code cleanup
   
 Continuous:
